@@ -16,17 +16,28 @@
 }
 
 .button-green {
+  margin: 5px;
   background: teal;
   color: white;
   padding: 10px 15px;
   border:  none;
-  &:active, &focus {
+  border-radius: 3px;
+  &:active, &:focus {
     outline: none;
     border: none;
     background-color: darken(teal, 20);
   }
   &:hover {
     background-color: darken(teal, 10);
+  }
+  &.button-delete-user{
+    background-color: crimson;
+    &:active, &:focus {
+      background-color: darken(crimson, 20)
+    }
+    &:hover {
+      background-color: darken(crimson, 10);
+    }
   }
 
   &.fixed{

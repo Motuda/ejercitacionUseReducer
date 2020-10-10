@@ -7,7 +7,7 @@ import Modal from './components/Modal/Modal';
 import UserModal from './components/UserModal/UserModal';
 import NewUserModal from './components/NewUserModal/NewUserModal';
 import JobModal from './components/JobModal/JobModal';
-import {ACTION_GET, reducer, jobReducer} from './reducers';
+import {ACTION_GET, reducer, jobReducer, ACTION_DELETE_USER} from './reducers';
 
 const App = () => {
 
@@ -50,6 +50,15 @@ const App = () => {
 
     setSelectedUser(user);
     setDisplayUserModal(true);
+  }
+
+  const deleteUser = user => {
+    
+    axios.delete("https://5f518d325e98480016123ada.mockapi.io/api/v1/users/" + user.id)
+    .then(res => {
+      dispatch({type: ACTION_DELETE_USER, user})
+    }).catch(err => alert("Error borrando usuario"));
+    //setDisplayUserModal(true);
   }
 
   const editJob = job => {
@@ -111,7 +120,13 @@ const App = () => {
                       onClick={() => editUser(user)}
                     >
                         Edit
-                      </button>
+                    </button>
+                    <button
+                      className="button-green button-delete-user"
+                      onClick={() => deleteUser(user)}
+                    >
+                      Delete user
+                    </button>
                   </td>
                 </tr>
               )

@@ -1,6 +1,7 @@
 export const ACTION_GET = "GETDATA";
 export const ACTION_EDIT = "EDIT";
 export const ACTION_ADD = "ADD";
+export const ACTION_DELETE_USER = "DELETEUSER";
 export const ACTION_EDIT_JOB = "EDITJOBS"
 
 // ahora los de jobs
@@ -21,10 +22,11 @@ export const reducer = (users, action) =>{
                 if(user.id == action.payload.id){
                     user.name = action.payload.name;
                     user.jobId = action.payload.jobId;
-
                 }
                 return user;
             });
+        case ACTION_DELETE_USER: 
+            return users.filter(user => user.id !== action.user.id);
         default:  
             return users;
     }
