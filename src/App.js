@@ -83,6 +83,11 @@ const App = () => {
         Add user +
       </button>
 
+      {/* ---------------------Agregar boton para sumar un job
+      <button className="button-green button-add-job fixed" onClick={() => addJob()}>
+        Add job +
+      </button> */}
+
       {
         displayUserModal ?
         <UserModal user={selectedUser} jobs={jobs} close={() => setDisplayUserModal(false)} users={users} setUsers={dispatch} />
@@ -110,7 +115,7 @@ const App = () => {
             users.map(user => {
               const job = jobs.find(job => job.id == user.jobId) || {name: "Not Found"};
               return (
-                <tr>
+                <tr key="{user.id}">
                   <td>{user.name}</td>
                   <td><img className="avatar-img" src={user.avatar} /></td>
                   <td>{job.name}</td>
